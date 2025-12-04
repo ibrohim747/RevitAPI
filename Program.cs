@@ -32,9 +32,9 @@ namespace RevitAPI
             ElementId wallId = doc.CreateNewElementId();
             Console.WriteLine($"Документ выдал новый ID для стены: {wallId.Value}");
 
-            Wall myFirstWall = new Wall(wallId, concreteWallType, wallLocation);
+            //-Wall myFirstWall = new Wall(wallId, concreteWallType, wallLocation);
 
-            myFirstWall.PrintInfo();
+            //-myFirstWall.PrintInfo();
             // 4. Добавляем стену в "базу данных" документа
             // doc.AddElement(myWall, wallId);
 
