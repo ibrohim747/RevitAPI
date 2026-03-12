@@ -5,3 +5,10 @@ C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug
 C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\RevitAPI.csproj.CoreCompileInputs.cache
 C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\RevitAPI.exe
 C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\RevitAPI.pdb
+C:\Users\User\Desktop\Code\RevitAPI\bin\Debug\RevitAPI.pdb
+C:\Users\User\Desktop\Code\RevitAPI\obj\Debug\RevitAPI.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Code\RevitAPI\obj\Debug\RevitAPI.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Code\RevitAPI\obj\Debug\RevitAPI.pdb
+C:\Users\User\Desktop\Code\RevitAPI\bin\Debug\RevitAPI.dll.config
+C:\Users\User\Desktop\Code\RevitAPI\bin\Debug\RevitAPI.dll
+C:\Users\User\Desktop\Code\RevitAPI\obj\Debug\RevitAPI.dll

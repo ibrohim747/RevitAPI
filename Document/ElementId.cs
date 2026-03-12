@@ -36,6 +36,11 @@ namespace RevitAPI.Document
             return this._value == other._value;
         }
 
+        public void toString()
+        {
+            _value.ToString();
+        }
+
         // Стандартный метод Equals для сравнения с любым объектом
         public override bool Equals(object obj)
         {

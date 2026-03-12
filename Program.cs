@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using RevitAPI.Document;
 using RevitAPI.Geometry;
 using RevitAPI.Elements.HostObject;
+using RevitAPI;
 
 namespace RevitAPI
 {
@@ -32,15 +33,32 @@ namespace RevitAPI
             ElementId wallId = doc.CreateNewElementId();
             Console.WriteLine($"Документ выдал новый ID для стены: {wallId.Value}");
 
-            //-Wall myFirstWall = new Wall(wallId, concreteWallType, wallLocation);
+            Object category = new Object();
 
-            //-myFirstWall.PrintInfo();
+            Wall myFirstWall = new Wall(wallId, concreteWallType, wallLocation, 4345, "First wall", doc, category);
+
+            Wall mySecondWall = new Wall(concreteWallType, wallLocation, 4345, "Second wall", doc, category);
+            Wall myThirdWall = new Wall(concreteWallType, wallLocation, 4345, "Third wall", doc, category);
+
+
+            Console.WriteLine("First Wall");
+            myFirstWall.PrintInfo();
             // 4. Добавляем стену в "базу данных" документа
             // doc.AddElement(myWall, wallId);
+            Console.WriteLine(myFirstWall.EId.ToString());
+
+            Console.WriteLine("Second Wall");
+            mySecondWall.PrintInfo();
+            Console.WriteLine(mySecondWall.EId.ToString());
+
+            Console.WriteLine("Third Wall");
+            myThirdWall.PrintInfo();
+            Console.WriteLine(myThirdWall.EId.ToString());
+
 
             // Повторяем для двери
             ElementId doorId = doc.CreateNewElementId();
-            Console.WriteLine($"Документ выдал новый ID для двери: {doorId.Value}");
+            Console.WriteLine($"Документ выдал новый ID для двери: {doorId.ToString()}");
 
             Console.ReadLine();
         }

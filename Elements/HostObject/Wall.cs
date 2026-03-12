@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using RevitAPI.Document;
 
 namespace RevitAPI.Elements.HostObject
 {
@@ -20,6 +21,8 @@ namespace RevitAPI.Elements.HostObject
         public List<object> Parameters { get; private set; } // Просто для примера
 
 
+        public static RevitDocumentSimulator doc = new RevitDocumentSimulator();
+        ElementId wallId = doc.CreateNewElementId();
 
         // Конструктор, который "собирает" стену из готовых деталей
         public Wall(ElementId Eid, WallType wallType, LocationCurve location, int id, string name, object document, object category)
@@ -40,6 +43,26 @@ namespace RevitAPI.Elements.HostObject
             this.IsPinned = false;
             this.Parameters = new List<object>(); // Создаем пустой список параметров
         }
+
+        public Wall(WallType wallType, LocationCurve location, int id, string name, object document, object category)
+            : base(id, name, document, category)
+        {
+            // Проверяем, что нам не передали пустые детали
+            if (wallType == null || location == null)
+            {
+                throw new ArgumentNullException("Тип и расположение стены не могут быть null.");
+            }
+            
+            // Присваиваем свойства
+            this.EId = wallId;
+            this.Type = wallType;
+            this.Location = location;
+
+            // Инициализируем другие свойства
+            this.IsPinned = false;
+            this.Parameters = new List<object>(); // Создаем пустой список параметров
+        }
+
 
         public void PrintInfo()
         {
