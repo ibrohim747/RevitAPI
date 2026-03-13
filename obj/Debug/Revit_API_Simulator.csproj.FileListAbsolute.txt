@@ -1,7 +1,0 @@
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\bin\Debug\Revit_API.exe.config
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\bin\Debug\Revit_API.exe
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\bin\Debug\Revit_API.pdb
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\Revit_API_Simulator.csproj.AssemblyReference.cache
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\Revit_API_Simulator.csproj.CoreCompileInputs.cache
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\Revit_API.exe
-C:\Users\anvva\OneDrive\Рабочий стол\C#\Revit_API_Simulator\obj\Debug\Revit_API.pdb
