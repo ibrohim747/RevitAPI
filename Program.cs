@@ -60,6 +60,20 @@ namespace RevitAPI
             ElementId doorId = doc.CreateNewElementId();
             Console.WriteLine($"Документ выдал новый ID для двери: {doorId.ToString()}");
 
+            doc.AddElement(myFirstWall, myFirstWall.EId);
+            doc.AddElement(mySecondWall, mySecondWall.EId);
+
+            Console.WriteLine("--------------------------");
+            var elements = doc.ReturnElements();
+            Console.WriteLine(elements.Values);
+
+            foreach (var pair in elements)
+            {
+                var id = pair.Value;
+                object element = pair.Key;
+                Console.WriteLine(id.Name, element);
+            }
+
             Console.ReadLine();
         }
     }

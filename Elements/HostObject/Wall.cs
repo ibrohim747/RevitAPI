@@ -66,7 +66,7 @@ namespace RevitAPI.Elements.HostObject
 
         public void PrintInfo()
         {
-            Console.WriteLine($"--- Стена ID: {this.Id} ---");
+            Console.WriteLine($"--- Стена ID: {this.EId} ---");
             Console.WriteLine($"Тип стены: '{this.Type.Name}' (Толщина: {this.Type.Width} м)");
             Console.WriteLine($"Длина стены: {this.Location.Curve.Length:F2} м");
             Console.WriteLine($"Начальная точка: ({this.Location.Curve.StartPoint.X}, {this.Location.Curve.StartPoint.Y})");
