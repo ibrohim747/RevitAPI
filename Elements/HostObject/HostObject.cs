@@ -17,8 +17,8 @@ namespace RevitAPI.Elements.HostObject
             return new List<IElement>();
         }
 
-        protected HostObject(int id, string name, object document, object category)
-            : base(id, name, document, category)
+        protected HostObject(int id, string name, object document, object category, Location location)
+            : base(id, name, document, category, location)
         {
         }
     }

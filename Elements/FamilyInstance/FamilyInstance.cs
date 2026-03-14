@@ -10,8 +10,8 @@ namespace RevitAPI.Elements.FamilyInstance
     {
         public object Symbol { get; set; }
 
-        public FamilyInstance(int id, string name, object document, object category, object symbol)
-            : base(id, name, document, category)
+        public FamilyInstance(int id, string name, object document, object category, object symbol, Location location)
+            : base(id, name, document, category, location)
         {
             Symbol = symbol;
         }

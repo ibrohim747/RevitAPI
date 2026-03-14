@@ -176,7 +176,8 @@ namespace RevitAPI.Elements
         public ElementOnPhaseStatus GetPhaseStatus(ElementId phaseId)
         {
             if (phaseId == null)
-                throw new ArgumentNullException(nameof(phaseId));
+                //phaseId = "Base";
+                return null;
 
             // Элемент создан в этой фазе
 
