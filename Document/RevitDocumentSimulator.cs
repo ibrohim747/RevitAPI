@@ -32,5 +32,10 @@ namespace RevitAPI.Document
                 _elements.Add(id, element);
             }
         }
+
+        public Dictionary<ElementId, object> ReturnElements()
+        {
+            return _elements;
+        }
     }
 }

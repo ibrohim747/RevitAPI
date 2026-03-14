@@ -22,19 +22,4 @@ namespace RevitAPI.Elements.HostObject
         {
         }
     }
-
-    public abstract class HostObject2 : Element2
-    {
-        //       From abstract class Element2
-        //public ElementId? Id { get; protected set; }
-        //public string Name { get; set; }
-        //public List<object> Parameters { get; private set; }
-        //public bool IsPinned { get; set; }
-
-        protected HostObject2(ElementId id, string name)
-            : base(id, name)
-        {
-        }
-
-    }
 }

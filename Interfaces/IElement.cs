@@ -19,27 +19,10 @@ namespace RevitAPI.Interfaces
         object Parameters { get; }
         // Имитация расположения
         object Location { get; set; }
-        bool IsPinned { get; set; }
+        bool Pinned { get; set; }
 
         void Delete();
         void Pin();
         void Unpin();
     }
-
-    public interface IElement2
-    {
-        ElementId? Id { get; }
-        string Name { get; set; }
-
-        //Document Document { get; }
-        //Category Category { get; }
-        //ParameterSet Parameters { get; }
-
-        //Point Location { get; set; }
-
-        bool IsPinned { get; set; }
-
-        void Delete();
-    }
-
 }

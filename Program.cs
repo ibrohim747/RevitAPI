@@ -71,7 +71,7 @@ namespace RevitAPI
             {
                 var id = pair.Value;
                 object element = pair.Key;
-                Console.WriteLine(id.Name, element);
+                Console.WriteLine(element);
             }
 
             Console.ReadLine();
