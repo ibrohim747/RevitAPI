@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI
+namespace RevitAPI.Elements
 {
-    public class Document : ItemFactoryBase
+    public class Location : APIObject
     {
-        public Document() { }
     }
 }

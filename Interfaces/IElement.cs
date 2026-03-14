@@ -1,4 +1,5 @@
-﻿using RevitAPI.Document;
+﻿using RevitAPI;
+using RevitAPI.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,13 @@ namespace RevitAPI.Interfaces
         int Id { get; }
         string Name { get; set; }
         // Имитация ссылки на документ
-        object Document { get; }
+        Document Document { get; }
         // Имитация категории
-        object Category { get; }
+        Category Category { get; }
         // Имитация коллекции параметров
-        object Parameters { get; }
+        ParameterSet Parameters { get; }
         // Имитация расположения
-        object Location { get; set; }
+        Location Location { get; set; }
         bool Pinned { get; set; }
-
-        void Delete();
-        void Pin();
-        void Unpin();
     }
 }

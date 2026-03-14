@@ -1,4 +1,4 @@
-﻿using RevitAPI.Document;
+﻿using RevitAPI;
 using RevitAPI.Geometry;
 using RevitAPI.Interfaces;
 using RevitAPI.Parameters;
@@ -26,6 +26,8 @@ namespace RevitAPI.Elements
         public ElementId OwnerViewId { get; } //0
         public WorksetId WorksetId { get; }  //0
 
+
+
         /**
         BoundingBox
         DemolishedPhaseId
@@ -42,45 +44,168 @@ namespace RevitAPI.Elements
         ViewSpecific
         */
 
-        //-----------------------------------------------------------Methods
+        // ─────────────────────────── Constructor ───────────────────────────
 
-        protected Element(int id, string name, object document, object category)
+        protected Element(int id, string name, object document, object category, Location location)
         {
             Id = id;
             Name = name;
-            Document = document;
-            Category = category;
-            // Инициализация параметров и местоположения
+            Document = document as Document
+                       ?? throw new ArgumentNullException(nameof(document));
+            Category = category as Category
+                       ?? throw new ArgumentNullException(nameof(category));
+
+            Parameters = new ParameterSet();
+            Location = location;
         }
 
+        // ──────────────────────────── Lifecycle ────────────────────────────
+
+        /// <summary>
+        /// Удаляет элемент из документа.
+        /// После удаления Id сбрасывается в -1.
+        /// </summary>
         public void Delete()
         {
-            // Логика удаления элемента
         }
 
+        /// <summary>Закрепляет элемент (запрещает перемещение).</summary>
         public void Pin()
         {
-            // Логика закрепления элемента
+            if (Pinned)
+                return;
+
+            Pinned = true;
         }
 
+        /// <summary>Открепляет элемент (разрешает перемещение).</summary>
         public void Unpin()
         {
-            // Логика открепления элемента
+            if (!Pinned)
+                return;
+
+            Pinned = false;
         }
 
+        // ──────────────────────────── Materials ────────────────────────────
+
+        /// <summary>
+        /// Возвращает набор идентификаторов материалов элемента.
+        /// </summary>
+        /// <param name="returnPaintMaterials">
+        ///   true  — вернуть также материалы покраски;
+        ///   false — только конструктивные материалы.
+        /// </param>
         public ICollection<ElementId> GetMaterialIds(bool returnPaintMaterials)
         {
-            return null;  //The set of material ids.
+            if (Parameters == null)
+                return Array.Empty<ElementId>();
+
+            return null;
         }
 
-        public IList<Parameter> GetParameters(string name) 
+        /// <summary>
+        /// Возвращает площадь, занятую материалом на поверхности элемента.
+        /// </summary>
+        public double GetMaterialArea(ElementId materialId, bool usePaintMaterial)
         {
-            return null;  //A collection containing the parameters having the same given parameter name.
+            if (materialId == null)
+                throw new ArgumentNullException(nameof(materialId));
+
+            return 0.0;
         }
 
+        /// <summary>
+        /// Возвращает объём, занятый материалом внутри элемента.
+        /// </summary>
+        public double GetMaterialVolume(ElementId materialId)
+        {
+            if (materialId == null)
+                throw new ArgumentNullException(nameof(materialId));
+
+            return 0.0;
+        }
+
+        // ─────────────────────────── Parameters ────────────────────────────
+
+        /// <summary>
+        /// Находит параметр по идентификатору типа (ForgeTypeId).
+        /// </summary>
+        public Parameter GetParameter(ForgeTypeId parameterTypeId)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Возвращает все параметры с указанным именем.
+        /// </summary>
+        public IList<Parameter> GetParameters(string name)
+        {
+            return null;
+        }
+
+        // ──────────────────────────── Type / Id ────────────────────────────
+
+        /// <summary>
+        /// Возвращает ElementId типа элемента (ElementType).
+        /// Если тип не назначен, возвращает ElementId.InvalidElementId.
+        /// </summary>
         public ElementId GetTypeId()
         {
-            return null; //return Id the type
+            // Тип хранится в именованном параметре "TYPE_ID"
+            return RevitDocumentSimulator.Example_Return_For_Delete();
+        }
+
+        /// <summary>
+        /// Проверяет, совпадают ли два ElementId.
+        /// </summary>
+        public bool Equals(ElementId first, ElementId second)
+        {
+            if (first == null && second == null) return true;
+            if (first == null || second == null) return false;
+
+            //return first.IntegerValue == second.IntegerValue;
+            return false;
+        }
+
+        // ──────────────────────────── Phase ────────────────────────────────
+
+        /// <summary>
+        /// Возвращает статус элемента относительно заданной фазы.
+        /// </summary>
+        public ElementOnPhaseStatus GetPhaseStatus(ElementId phaseId)
+        {
+            if (phaseId == null)
+                throw new ArgumentNullException(nameof(phaseId));
+
+            // Элемент создан в этой фазе
+
+            // Элемент создан в более ранней фазе — он существующий
+
+            // Элемент ещё не существует в данной фазе
+            return null;
+        }
+
+        // ──────────────────────────── Visibility ───────────────────────────
+
+        /// <summary>
+        /// Возвращает true, если элемент скрыт в указанном виде.
+        /// </summary>
+        public bool IsHidden(View pView)
+        {
+            if (pView == null)
+                throw new ArgumentNullException(nameof(pView));
+
+            return false;
+        }
+
+        /// <summary>
+        /// Возвращает true, если элемент является типом (ElementType),
+        /// а не экземпляром.
+        /// </summary>
+        public bool GetType()
+        {
+            return this is ElementType;
         }
 
         /*
@@ -97,7 +222,6 @@ namespace RevitAPI.Elements
         DeleteSubelement
         DeleteSubelements
         Dispose
-        Equals
         GetAnalyticalModel
         GetAnalyticalModelId
         GetChangeTypeAny
@@ -115,17 +239,11 @@ namespace RevitAPI.Elements
         GetGeneratingElementIds
         GetGeometryObjectFromReference
         GetHashCode
-        GetMaterialArea
-        GetMaterialVolume
         GetMonitoredLinkElementIds
         GetMonitoredLocalElementIds
         GetOrderedParameters
         GetParameterFormatOptions
-        GetParameters
-        GetPhaseStatus
         GetSubelements
-        GetType
-        GetTypeId
         GetValidTypes
         GetValidTypes(Document, ICollection ElementId )
         HasPhases

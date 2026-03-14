@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI
+namespace RevitAPI.Interfaces
 {
-    public class Document : ItemFactoryBase
+    public interface IDisposable
     {
-        public Document() { }
     }
 }

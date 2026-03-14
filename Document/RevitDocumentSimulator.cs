@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI.Document
+namespace RevitAPI
 {
     public class RevitDocumentSimulator
     {
@@ -22,6 +22,11 @@ namespace RevitAPI.Document
             int newId = _nextAvailableId;
             _nextAvailableId++; // Увеличиваем счетчик для следующего вызова
             return new ElementId(newId);
+        }
+
+        public static ElementId Example_Return_For_Delete()
+        {
+            return new ElementId(233245);
         }
 
         // Метод для добавления "элементов" в нашу "базу данных"

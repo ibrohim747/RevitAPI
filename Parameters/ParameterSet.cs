@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI.Parameters
+namespace RevitAPI
 {
-    internal class ParameterSet
+    public class ParameterSet
     {
     }
 }

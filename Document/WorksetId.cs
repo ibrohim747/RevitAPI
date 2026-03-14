@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RevitAPI
 {
-    public class Document : ItemFactoryBase
+    public class WorksetId
     {
-        public Document() { }
+        public WorksetId() { }
     }
 }

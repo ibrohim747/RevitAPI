@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RevitAPI.Elements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitAPI
 {
-    public class Document : ItemFactoryBase
+    public abstract class ItemFactoryBase : APIObject
     {
-        public Document() { }
     }
 }

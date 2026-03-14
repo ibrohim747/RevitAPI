@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI
+namespace RevitAPI.Elements
 {
-    public class Document : ItemFactoryBase
+    internal class Phase
     {
-        public Document() { }
+        public Phase() { }
     }
 }

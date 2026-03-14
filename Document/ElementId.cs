@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitAPI.Document
+namespace RevitAPI
 {
     // В Revit API это структура для эффективности. Мы последуем этому примеру.
     public struct ElementId : IEquatable<ElementId>
